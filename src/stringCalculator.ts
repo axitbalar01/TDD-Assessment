@@ -18,5 +18,10 @@ export function add(input: string): number {
   );
   const parts = numbersPart.split(pattern).filter(Boolean);
 
-  return parts.map((n) => parseInt(n, 10)).reduce((a, b) => a + b, 0);
+  const values = parts.map((n) => parseInt(n, 10));
+  const negatives = values.filter((n) => n < 0);
+  if (negatives.length > 0) {
+    throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
+  }
+  return values.reduce((a, b) => a + b, 0);
 }
