@@ -9,4 +9,8 @@ describe("String Calculator", () => {
   test("single number returns same number", () => {
     expect(add("1")).toBe(1);
   });
+
+  test("two numbers comma separated", () => {
+    expect(add("1,5")).toBe(6);
+  });
 });
