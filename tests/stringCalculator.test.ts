@@ -25,4 +25,8 @@ describe("String Calculator", () => {
   test("supports custom single-character delimiter", () => {
     expect(add("//;\n1;2")).toBe(3);
   });
+
+  test("supports custom multi-character delimiter", () => {
+    expect(add("//[***]\n1***2***3")).toBe(6);
+  });
 });

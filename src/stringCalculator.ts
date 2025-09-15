@@ -6,7 +6,9 @@ export function add(input: string): number {
 
   const header = /^\/\/(.*?)\n/.exec(input);
   if (header) {
-    delimiters = [header[1]];
+    const spec = header[1];
+    const bracketed = Array.from(spec.matchAll(/\[(.*?)\]/g), (m) => m[1]);
+    delimiters = bracketed.length > 0 ? bracketed : [spec];
     numbersPart = input.slice(header[0].length);
   }
 
